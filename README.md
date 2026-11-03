@@ -2,6 +2,10 @@
 
 The ros packages for the robot cell at Raccoon.
 
+Pleace git clone `kuka_kr300_support`
+run `rosdep update`
+run `colcon build`
+
 ## Getting started (recommended)
 
 This workspace depends on at least one ROS package that is not distributed as a ROS apt package (e.g. `kuka_kr300_support`). The common ROS 2 practice is to bring those repositories into the same colcon workspace using a vcstool `.repos` file.
