@@ -1,0 +1,40 @@
+# ROS 2 specific ignores
+build/
+install/
+log/
+.ros/
+.vscode/
+
+# Python specific ignores
+*.pyc
+__pycache__/
+.Python
+venv/
+env/
+
+# Catkin/Colcon ignores
+devel/
+build_isolated/
+install_isolated/
+
+# General ignores
+.DS_Store
+*.swp
+*~
+*.bak
+*.orig
+*.rej
+.project
+.cproject
+.settings
+.cache
+.fuse_hidden*
+*.tfm
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+*.creator
+*.user
+
+cyclonedds.xml

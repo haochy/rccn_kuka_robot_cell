@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+    <robot xmlns:xacro="https://ros.org/wiki/xacro">
+        <xacro:macro name="rccn_east_robot" params="prefix">
+            <xacro:property name="east_prefix" value="east_" />
+
+            <xacro:include filename="$(find kuka_kr300_support)/urdf/kr300r2500ultra_macro.xacro" />
+
+            <link name="${prefix}east_e1_rail">
+                <visual>
+                    <geometry>
+                        <mesh filename="package://rccn_kuka_robot_cell/meshes/rail/visual/east_rail.stl"/>
+                    </geometry>
+                    <material name="">
+                        <color rgba="1.0 1.0 1.0 1.0"/>
+                    </material>
+                </visual>
+                <collision>
+                    <geometry>
+                        <mesh scale="0.001 0.001 0.001" filename="package://rccn_kuka_robot_cell/meshes/rail/collision/east_rail.stl"/>
+                    </geometry>
+                </collision>
+                <inertial>
+                    <mass value="1.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+                    <inertia ixx="10.0" ixy="0.0" ixz="0.0" iyy="10.0" iyz="0.0" izz="10.0"/>
+                </inertial>
+            </link>
+
+            <joint name="${prefix}east_joint_e1" type="prismatic">
+                <parent link="${prefix}east_e1_rail"/>
+                <child link="${prefix}east_e1_plate"/>
+                <!-- Here we enter the joint position just defined before -->
+                <origin xyz="0.00000000 0.00000000 0.00000000" rpy="0.00000000 0.00000000 0.00000000"/>
+                <!-- Here we define the axis along which the geometry is moved -->
+                <axis xyz="1 0 0"/>
+                <!-- Here we define the joint's upper and lower limits -->
+                <limit effort="1000.0" lower="0.0" upper="4.266" velocity="0.25"/>
+            </joint>
+
+            <link name="${prefix}east_e1_plate">
+                <visual>
+                    <geometry>
+                        <mesh filename="package://rccn_kuka_robot_cell/meshes/rail/visual/east_plate.stl"/>
+                    </geometry>
+                    <material name="">
+                        <color rgba="1.0 1.0 1.0 1.0"/>
+                    </material>
+                </visual>
+                <collision>
+                    <geometry>
+                        <mesh scale="0.001 0.001 0.001" filename="package://rccn_kuka_robot_cell/meshes/rail/collision/east_plate_no_servo.stl"/>
+                    </geometry>
+                </collision>
+                <inertial>
+                    <mass value="1.0"/> <origin xyz="0 0 0" rpy="0 0 0"/>
+                    <inertia ixx="10.0" ixy="0.0" ixz="0.0" iyy="10.0" iyz="0.0" izz="10.0"/>
+                </inertial>
+            </link>
+
+            <joint name="${east_prefix}attachment_joint" type="fixed">
+                <parent link="${prefix}east_e1_plate" />
+                <child link="${east_prefix}base_link" />
+                <origin xyz="-0.00206000 -0.00032000 -0.00000000" rpy="-0.00000002 -0.00012841 0.00024798" />
+            </joint>
+
+            <!-- kuka kr 300 r2500 ultra -->
+            <xacro:kuka_kr300r2500ultra prefix="${east_prefix}"/>
+        </xacro:macro>
+    </robot>
