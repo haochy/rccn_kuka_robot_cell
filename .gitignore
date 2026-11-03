@@ -36,5 +36,9 @@ install_isolated/
 *.sublime-workspace
 *.creator
 *.user
+.stl
 
 cyclonedds.xml
+
+# 暫時不納入版本管理的大型工具頭模型
+/robot_description/rccn_kuka_robot_cell/meshes/endeffector/visual/nstc_tcp_base.stl
