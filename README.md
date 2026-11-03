@@ -4,8 +4,14 @@ The ros packages for the robot cell at Raccoon.
 
 Pleace git clone `kuka_kr300_support`
 
-run ```rosdep update```
-run ```colcon build```
+run:
+ ```sh
+rosdep update
+```
+
+```sh
+colcon build
+```
 
 ## Getting started (recommended)
 
