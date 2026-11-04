@@ -252,6 +252,7 @@
       </geometry>
     </collision>
   </link>
+  <link name="gripper_tcp"/>
   <link name="nstc_tcp_fl_gripper">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -415,6 +416,12 @@
     <parent link="east_tool0"/>
     <child link="nstc_tcp_base"/>
   </joint>
+  <joint name="gripper_tcp_joint" type="fixed">
+    <parent link="nstc_tcp_base"/>
+    <child link="gripper_tcp"/>
+    <origin xyz="-0.1229995 0.384958 0.229587"
+            rpy="-0.7854 0 0"/>
+  </joint>  
     <joint name="nstc_tcp_fl_gripper_joint" type="prismatic">
     <origin rpy="-0.7854 0 0" xyz="-0.286588 0.384958 0.229587"/>
     <axis xyz="0 1 0"/>
